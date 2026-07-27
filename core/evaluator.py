@@ -154,7 +154,9 @@ def generate_text(
         eot_token=eot_token,
         stop_at_second_eot=stop_at_second_eot,
     )
-    return decode(out[0].tolist(), enc)
+    generated = decode(out[0].tolist(), enc)
+    generated.replace("<|endoftext|>", "").strip()
+    return generated
 
 
 # ---------------------------------------------------------------------------

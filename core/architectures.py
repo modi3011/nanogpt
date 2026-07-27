@@ -504,7 +504,12 @@ class GPT(nn.Module):
                 else:
                     break
 
-        if stop_at_second_eot and len(eot_positions) >= 2:
-            return idx[:, eot_positions[0] + 1 : eot_positions[1]]
+        if stop_at_second_eot:
+            if len(eot_positions) >= 2:
+                # clean case — return span between first and second EOT
+                return idx[:, eot_positions[0] + 1 : eot_positions[1]]
+            elif len(eot_positions) == 1:
+                # only one EOT generated — return everything up to it
+                return idx[:, eot_positions[0] + 1 :]
 
         return idx
