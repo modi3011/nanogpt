@@ -29,9 +29,6 @@ COPY docker/entrypoint.dev.sh ./entrypoint.dev.sh
 
 RUN chmod +x ./entrypoint.dev.sh
 
-# Checkpoint dirs — will be bind-mounted from host in docker-compose.yml
-# Commented out because no local ckpt.pt exists yet.
-# Remove comments once checkpoints are available.
 RUN mkdir -p checkpoints/stories checkpoints/code \
     && chown -R appuser:appuser /app
 

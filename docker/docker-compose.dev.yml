@@ -13,6 +13,5 @@ services:
       - ../core:/app/core
       - ../api:/app/api
       - ../frontend:/app/frontend
-      # checkpoints — commented out until local ckpt.pt files exist
-      # - ../checkpoints/stories:/app/checkpoints/stories
-      # - ../checkpoints/code:/app/checkpoints/code
+      - ../checkpoints/stories:/app/checkpoints/stories
+      - ../checkpoints/code:/app/checkpoints/code
